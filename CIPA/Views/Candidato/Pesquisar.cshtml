@@ -1,0 +1,51 @@
+@model List<CIPA.Models.Candidato>
+
+<h2>Pesquisar Candidatos</h2>
+
+<!-- Formulário de pesquisa -->
+<form asp-action="Pesquisar" method="post">
+    <div class="form-group">
+        <label for="termoPesquisa">Digite o nome ou número do partido:</label>
+        <input type="text" id="termoPesquisa" name="termoPesquisa" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Pesquisar</button>
+</form>
+
+<!-- Exibir resultados da pesquisa -->
+@if (Model != null && Model.Any())
+{
+    <h3>Resultados da Pesquisa</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Número do Partido</th>
+                <th>Votos</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var candidato in Model)
+            {
+                <tr>
+                    <td>@candidato.Id</td>
+                    <td>@candidato.Nome</td>
+                    <td>@candidato.NumeroPartido</td>
+                    <td>@candidato.Votos</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (ViewBag.Mensagem != null)
+{
+    <div class="alert alert-warning">
+        @ViewBag.Mensagem
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        Nenhum candidato encontrado.
+    </div>
+}

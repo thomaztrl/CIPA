@@ -1,0 +1,26 @@
+@model CIPA.Models.Candidato
+
+<h2>Excluir Candidato</h2>
+
+<h3>Tem certeza que deseja excluir este candidato?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Id</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+
+        <dt class="col-sm-2">Nome</dt>
+        <dd class="col-sm-10">@Model.Nome</dd>
+
+        <dt class="col-sm-2">Número do Partido</dt>
+        <dd class="col-sm-10">@Model.NumeroPartido</dd>
+
+        <dt class="col-sm-2">Votos</dt>
+        <dd class="col-sm-10">@Model.Votos</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Excluir" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

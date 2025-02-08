@@ -1,0 +1,36 @@
+@model List<CIPA.Models.Candidato>
+
+<h2>Candidatos</h2>
+
+<!-- Link para a tela de pesquisa -->
+<a asp-action="Pesquisar" class="btn btn-info">Pesquisar Candidatos</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Número do Partido</th>
+            <th>Votos</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidato in Model)
+        {
+            <tr>
+                <td>@candidato.Id</td>
+                <td>@candidato.Nome</td>
+                <td>@candidato.NumeroPartido</td>
+                <td>@candidato.Votos</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@candidato.Id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@candidato.Id">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@candidato.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Cadastrar Novo Candidato</a>

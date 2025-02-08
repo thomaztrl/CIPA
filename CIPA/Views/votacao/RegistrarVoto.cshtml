@@ -1,0 +1,16 @@
+@model List<CIPA.Models.Candidato>
+
+<h2>Registrar Voto</h2>
+
+<form asp-action="RegistrarVoto" method="post">
+    <div class="form-group">
+        <label for="candidatoId">Selecione o Candidato:</label>
+        <select class="form-control" id="candidatoId" name="candidatoId">
+            @foreach (var candidato in Model)
+            {
+                <option value="@candidato.Id">@candidato.Nome - @candidato.NumeroPartido</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Votar</button>
+</form>

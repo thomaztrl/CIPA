@@ -1,0 +1,23 @@
+@model List<CIPA.Models.Candidato>
+
+<h2>Resultado da Votação</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Número do Partido</th>
+            <th>Votos</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidato in Model)
+        {
+            <tr>
+                <td>@candidato.Nome</td>
+                <td>@candidato.NumeroPartido</td>
+                <td>@candidato.Votos</td>
+            </tr>
+        }
+    </tbody>
+</table>
